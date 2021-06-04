@@ -1,12 +1,12 @@
 function maxPossible(num1, num2) {
-  let num1Len = `${num1}`.length;
-  let str = `${num1}${num2}`;
-  let result = str
+  let arr1 = String(num1).split("");
+  let arr2 = String(num2)
     .split("")
-    .sort((a, b) => b - a)
-    .slice(0, num1Len)
-    .join("");
-  return Number(result);
+    .sort((a, b) => b - a);
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] < arr2[0]) {
+      arr1[i] = arr2.shift();
+    }
+  }
+  return arr1.join("");
 }
-
-console.log(maxPossible(9132, 5564)); // 9655
